@@ -6,7 +6,7 @@ URL = 'http://export.arxiv.org/oai2'
 sickle = Sickle(URL)
 records = records = sickle.ListRecords(
              **{'metadataPrefix': 'oai_dc',
-             'from': '2019-01-01',
+             'from': '2015-01-01',
              'ignore_deleted':True
             })
 
