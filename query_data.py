@@ -7,14 +7,14 @@ import time
 cwd = os.getcwd()
 
 URL = 'http://export.arxiv.org/oai2'
-subject_list = ['physics', 'cs', 'math', 'q-bio', 'q-fin', 'stat']
+subject_list =  ['physics', 'cs', 'math', 'q-bio', 'q-fin', 'stat']
 for subject in subject_list:
     sickle = Sickle(URL)
-    fr = '2015-04-04'
+    fr = '2015-01-01'
     year, month, day = fr.split('-')
     year, month, day = int(year), int(month), int(day)
     fr_dt = date(year, month, day)
-    un = '2020-04-30'
+    un = '2020-07-01'
     year, month, day = un.split('-')
     year, month, day = int(year), int(month), int(day)
     un_dt = date(year, month, day)
@@ -50,33 +50,27 @@ for subject in subject_list:
     if not os.path.exists(f"{cwd}/data/{subject}"):
         os.mkdir(f"{cwd}/data/{subject}")
 
-    with open(f'data/{subject}/date_list.pkl', "rb") as rf:
-        read_date_list = pickle.load(rf)
-    write_date_list = read_date_list.extend(date_list)
     with open(f'data/{subject}/date_list.pkl', "wb") as wf:
         pickle.dump(date_list, wf)
 
-
-    with open(f'data/{subject}/author_length_list.pkl', "rb") as rf:
-        read_author_length_list = pickle.load(rf)
-    write_author_length_list = read_author_length_list.extend(author_length_list)
     with open(f'data/{subject}/author_length_list.pkl', "wb") as wf:
         pickle.dump(author_length_list, wf)
 
 # subject_list = ['physics', 'cs', 'math', 'q-bio', 'q-fin', 'stat']
 # date_list, author_length_list = [], []
 # for subject in subject_list:
-#     with open(f'data/{subject}/date_list.pkl', "rb") as f:
+#     print(f'{cwd}/data/{subject}/date_list.pkl', subject)
+#     with open(f'{cwd}/data/{subject}/date_list.pkl', "rb") as f:
 #         dt_lst = pickle.load(f)
 #     date_list.extend(dt_lst)
 
-#     with open(f'data/{subject}/author_length_list.pkl', "rb") as f:
+#     with open(f'{cwd}/data/{subject}/author_length_list.pkl', "rb") as f:
 #         at_lst = pickle.load(f)
 #     author_length_list.extend(at_lst)
 
-# print(len(date_list))
-# with open(f'data/all/date_list.pkl', "wb") as f:
+
+# with open(f'{cwd}/data/all/date_list.pkl', "wb") as f:
 #     pickle.dump(date_list, f)
 
-# with open(f'data/all/author_length_list.pkl', "wb") as f:
+# with open(f'{cwd}/data/all/author_length_list.pkl', "wb") as f:
 #     pickle.dump(author_length_list, f)
